@@ -59,8 +59,8 @@ Things you may want to cover:
 |prefecture|string|null: false|
 |city|text|null: false|
 |house_number|text|null: false|
-|building|text||
-|telephone|integer||
+|building|text|
+|telephone|integer|
 
 ### Association
 - belongs_to :user
