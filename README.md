@@ -110,12 +110,12 @@ Things you may want to cover:
 - has_many  :user, through: :goods, dependent: :destroy
 - belongs_to  :seller, class_name:"user"
 - belongs_to  :buyer, class_name:"user
-- belongs_to  :brand
-- belongs_to  :category
-- belongs_to  :status
-- belongs_to  :condition
-- belongs_to  :postage_payer
-- belongs_to  :confirm
+- belongs_to_active_hash  :brand
+- belongs_to_active_hash  :category
+- belongs_to_active_hash  :status
+- belongs_to_active_hash  :condition
+- belongs_to_active_hash  :postage_payer
+- belongs_to_active_hash  :confirm
 
 
 ### brandsテーブル
