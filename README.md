@@ -85,7 +85,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|item_name|integer|null:false, index:true|
+|name|integer|null:false, index:true|
 |description|text|null: false|
 |status_id|references|null: false, foreign_key: true|
 |condition_id|references|null: false, foreign_key: true|
