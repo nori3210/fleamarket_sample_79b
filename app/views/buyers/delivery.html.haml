@@ -1,0 +1,11 @@
+.delivery
+  .header
+  .main
+    .container
+      .heder 発送元・お届け先住所入力
+      .content
+        .form-group
+        =f.label:お名前
+        %span.form-group__require 必須
+        =f.text.field:family_name,placeholder "例)天気", class:"form-grop"
+        
