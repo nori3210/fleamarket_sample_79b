@@ -1,0 +1,34 @@
+.header
+  .header__container 
+    .header__container__top
+      .header__container__top__logo
+        =link_to '/', class:"logo-link" do
+          =image_tag("logo.png", class: "image-logo")
+      %form.search-form{:action => "#"}
+        %input{:name => "keyword", :placeholder => "キーワードから探す", :type => "search", :class => "search-box"}
+        =image_tag("icon-search 1.png",  class:  "search-icon")
+    .listsFrame
+      %ul.listsFrameLeft
+        %li.listsFrameLeft__item.listsFrameLeft__item--first
+        .category_lists
+          = link_to "カテゴリー", "#", id: "catBtn"
+          .category_list
+            .parents_list
+              -# jquery導入後hover表示
+              -# - @parents.each do |parent|
+              -#   = link_to "#{parent.name}", category_path(parent), class: "parent_category",id: "#{parent.id}"
+            .children_list
+              
+            .grand_children_list
+              
+        %li.listsFrameLeft__item.listsFrameRight__item--first
+          = link_to "ブランド", "#", id: "brandBtn"
+      %ul.listsFrameRight
+
+        %li.listsFrameRight__item
+          = link_to "ログアウト", "#"
+          = link_to "マイページ", "#"
+        %li.listsFrameRight__item
+          = link_to "ログイン", "#"
+        %li.listsFrameRight__item.listsFrameRight__item--new
+          = link_to "新規会員登録", "#"

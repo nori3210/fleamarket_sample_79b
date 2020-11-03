@@ -1,0 +1,132 @@
+
+.footer{
+  font-weight: 500;
+  height: 660px;
+  width: 100%;
+  background-color: #272727;
+  
+  &__top{
+    text-align: center;
+    height: 140px;
+    color: white;
+    position: relative;
+    background-image: url(bg-appBanner-pict.jpg);
+    padding: 100px 40px;
+    &__title{
+      font-size: 24px;
+      line-height: 1.4;
+      font-weight: bold;
+      position: relative;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__text{
+      font-size: 35px;
+      line-height: 1.4;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__btn{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+      &--apple{
+        width: 205px;
+        margin-right: 10px;
+        
+      }
+      &--google{
+        width: 205px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+  &__bottom{
+    padding: 60px 0;
+    height: 400px;
+    width: 100%;
+    float: left;
+    background-color: #272727;
+    text-align: center;
+  }
+      .footer__bottom-about-furima{
+        width: 20%;
+        float: left;
+        padding: 20px 20px 0 300px;
+        background-color: #272727;
+
+      }
+      .furima{
+        margin: 0 0 20px;
+        color: #ffffff;
+        font-size: 1.0rem;
+        background-color: #272727;
+      }
+      .furima-detail{
+        width: 100%;
+        float: left;
+        font-size: 0.6rem;
+        color: gainsboro;
+        margin-top: 10px;
+        text-decoration: none;
+        background-color: #272727;
+      }
+
+      .footer__bottom-about-watch{
+        width: 20%;
+        float: left;
+        padding: 20px;
+        background-color: #272727;
+      }
+      .watch{
+        margin: 0 0 20px;
+        color: #ffffff;
+        font-size: 1.0rem;
+        background-color: #272727;
+      }
+      .watch-detail{
+        width: 100%;
+        float: left;
+        font-size: 0.6rem;
+        color: gainsboro;
+        margin-top: 10px;
+        text-decoration: none;
+        background-color: #272727;
+      }
+  
+      .footer__bottom-about-help{
+        width: 20%;
+        float: left;
+        padding: 20px 150px 0 0;
+        background-color: #272727;
+      }
+        .help{
+          margin: 0 0 20px;
+          color: #ffffff;
+          font-size: 1.0rem;
+          background-color: #272727;
+        }
+        .help-detail{
+          width: 100%;
+          float: left;
+          font-size: 0.6rem;
+          color: gainsboro;
+          margin-top: 10px;
+          text-decoration: none;
+          background-color: #272727;
+        }
+  .last-logo{
+    height: 45px;
+    width: 150px;
+    text-align: center;
+    background-color: #272727;
+  }
+  .furimalogo{
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 5px;
+    background-color: #272727;
+  }
+}
