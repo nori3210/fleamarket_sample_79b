@@ -5,6 +5,7 @@ class BuyersController < ApplicationController
   def done
   end
 
-  def indexfinish
+  def deliverry
+    @user = User.new
   end
 end
