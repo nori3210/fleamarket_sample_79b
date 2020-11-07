@@ -1,35 +1,57 @@
-.footer
-  .footer__top
-    .footer__top__title
-      だれでもかんたん、人生を変える変えるフリマアプリ
-    .footer__top__text
+.aboveFooter
+  .aboveContents
+    %h2.aboveContents__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.aboveContents__text
       今すぐ無料ダウンロード！
-      
-      .footer__top__btn
-        =link_to "https://www.apple.com/jp/ios/app-store/" do
-          = image_tag "app-store-badge.png",class:"footer__top__btn--apple"
-        =link_to "https://play.google.com/store?hl=ja" do
-          = image_tag "google-play-badge.png",class:"footer__top__btn--google"
-        
-  .footer__bottom-about
-    .footer__bottom-about-furima
-      %p.furima
-        %b FURIMAについて
-      =link_to "会社概要（運営会社）", "#", class: "furima-detail"
-      =link_to "プライバシーポリシー", "#", class: "furima-detail"
-      =link_to "FURIMA利用規約", "#", class: "furima-detail"
-      =link_to "ポイントに関する特約", "#", class: "furima-detail"
-    .footer__bottom-about-watch
-      %p.watch
-        %b FURIMAを見る
-      =link_to "カテゴリー一覧",  "#",  class: "watch-detail"
-      =link_to "ブランド一覧",  "#",  class: "watch-detail"
-    .footer__bottom-about-help
-      %p.help
-        %b ヘルプ&ガイド
-      =link_to "FURIMAガイド", "#", class: "help-detail"
-      =link_to "FURIMAロゴ利用ガイドライン", "#", class: "help-detail"
-      =link_to "お知らせ", "#", class: "help-detail"
-  =image_tag("logo-white.png",class: "last-logo")
-  %p.furimalogo
-    %b ©️FURIMA
+    .contentBtn
+      = link_to image_tag('app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', class: 'appleBtn'), "#"
+      = link_to image_tag('google-play-badge', class: 'googleBtn'), "#"
+
+.foot
+  %ul.footBox
+    %li.footContents
+      %h2.footContents__head
+        FURIMAについて
+      %ul.footContent
+        %li
+          = link_to "#" do
+            会社概要（運営会社）
+        %li
+          = link_to "#" do
+            プライバシーポリシー
+        %li
+          = link_to "#" do
+            FURIMA利用規約
+        %li
+          = link_to "#" do
+            ポイントに関する特約
+
+    %li.footContents
+      %h2.footContents__head
+        FURIMAを見る
+      %ul.footContent
+        %li
+          = link_to "#" do
+            カテゴリー一覧
+        %li
+          = link_to "#" do
+            ブランド一覧
+
+    %li.footContents
+      %h2.footContents__head
+        ヘルプ&ガイド
+      %ul.footContent
+        %li
+          = link_to "#" do
+            FURIMAガイド
+        %li
+          = link_to "#" do
+            FURIMAロゴ利用ガイドライン
+        %li
+          = link_to "#" do
+            お知らせ
+  .foot__logo
+    = link_to image_tag('logo-white', class: 'logoImage'), "#"
+  %p.symbolMark
+    © FURIMA
