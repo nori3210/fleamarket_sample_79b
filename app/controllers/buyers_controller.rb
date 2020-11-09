@@ -9,5 +9,3 @@ class BuyersController < ApplicationController
     @user = User.new
   end
 end
-
-test
