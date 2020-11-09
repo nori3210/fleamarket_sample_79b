@@ -10,4 +10,3 @@ class BuyersController < ApplicationController
   end
 end
 
-test
