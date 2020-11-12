@@ -1,5 +1,5 @@
 .buyer
-  =render "header"
+  =render 'header'
   .main
     .main__inner
       .main__inner__purchase 購入内容の確認
@@ -27,7 +27,7 @@
         %p.main__inner__to-buy__text
         配送先と支払方法の入力を完了してください。
         =button_to '購入する','/', class:'to-buy__btn'
-  =render "footer"
+  =render partial:'footer'
 
     
 
