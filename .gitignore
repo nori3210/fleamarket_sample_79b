@@ -30,4 +30,5 @@
 yarn-debug.log*
 .yarn-integrity
 .env
-/app/controllers/.env
+*.app
+!/controllers/.env 
