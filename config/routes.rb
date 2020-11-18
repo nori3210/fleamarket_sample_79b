@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  devise_for :users
   root 'homes#index'
   resources :items
   resources :card, only: [:new, :show] do
@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users
-
-  devise_for :users
   resources :buyers do
     collection do 
       get  'done'
