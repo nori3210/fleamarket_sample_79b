@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'sellers/index'
   root 'homes#index'
   resources :items
   resources :card, only: [:new, :show] do
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :sellers
 end
 
 
