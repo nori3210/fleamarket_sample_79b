@@ -26,7 +26,7 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'メールアドレス'
           = f.password_field :password, autocomplete: 'current-password', placeholder: 'パスワード'
-          = recaptcha_tags
+          //= recaptcha_tags
           .login__main__content__form__box
             = button_to '/', class:'action' do
               ログイン
