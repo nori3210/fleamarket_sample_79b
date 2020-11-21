@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+
   root 'homes#index'
   resources :items
   resources :card, only: [:new, :show] do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :sellers, only: index
 end
 
 
