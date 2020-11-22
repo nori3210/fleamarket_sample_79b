@@ -23,7 +23,7 @@
             = icon('fab', 'apple',  class: 'icon')
             Appleでログイン
       .login__main__content__form
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = form_for @user do |f|
           = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'メールアドレス'
           = f.password_field :password, autocomplete: 'current-password', placeholder: 'パスワード'
           //= recaptcha_tags

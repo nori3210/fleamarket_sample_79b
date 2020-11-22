@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
   root 'homes#index'
+   devise_for :users
   resources :items
   resources :card, only: [:new, :show] do
     collection do
@@ -11,13 +12,15 @@ Rails.application.routes.draw do
     end
   end
   resources :users
-  resources :buyers do
+  resources :buyers, only: :index do
     collection do 
-      get  'done'
+      get 'done', to: 'buyer#index'
+      post 'done'
     end
   end
 
-  resources :sellers, only: index
+  resources :sellers, only: :index 
+   
 end
 
 
