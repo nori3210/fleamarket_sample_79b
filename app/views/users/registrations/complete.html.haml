@@ -1,0 +1,30 @@
+.single-container
+  %header.single-header
+    .single-header__logo
+      =link_to image_tag "logo-white.png", width:"185", height:"49"
+    %nav.single-header__progress
+      %ol.single-header__progress__text
+        %li.single-header__progress__text_complete--active{ id: "first" }
+          .single-header__progress__text_complete--active__text 会員情報
+          .single-header__progress_complete__round--blue
+        %li.single-header__progress__text_complete--tell
+          .single-header__progress__text_complete--tell__text お届け先住所
+          .single-header__progress_complete__round
+        %li.single-header__progress__text_complete--end{ id: "end" }
+          .single-header__progress__text_complete--end__text 完了
+          .single-header__progress_complete__round
+
+  %main.single-complete-main
+    %section.single-complete-main__container
+      %h2.single-complete-main__container__title
+        会員登録完了
+      .single-complete-main__container__form__frame
+        ありがとうございます。
+      .single-complete-main__container__form__frame
+        会員登録が完了しました。
+      .form-group__end
+        = link_to "/", class:"box__btn-wrapper__back-btn" do
+          戻る
+    .single-footer
+      .single-footer__logo
+        =link_to image_tag "logo-white.png", width:"185", height:"49"
