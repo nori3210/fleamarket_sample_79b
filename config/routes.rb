@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   root 'homes#index'
   resources :items
+  resources :item_images
   resources :buyers do
     collection do
       get 'done'

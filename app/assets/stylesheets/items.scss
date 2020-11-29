@@ -23,6 +23,35 @@
         display: flex;
         justify-content: left;
         align-items: center;
+        
+      }
+      .item-num-0{
+        width: auto;
+      }
+      .item-num{
+        width: auto;
+      }
+      .item-image__operation--delete{
+        color: skyblue;
+        text-align: center;
+      }
+      .post__drop__box__container{
+        display: block;
+        margin: 16px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+      
+        //プレビュー表示欄のCSS
+        .prev-content {
+          display: flex;
+          
+        }
+        //file_fieldのcss
+        .hidden-content {
+          .hidden-field {
+            //display: none;
+          }
+        }
       }
       &__title{
         display: flex;
@@ -61,6 +90,7 @@
       &__file{
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
         &-info{
           margin-bottom: 16px;
           font-size: 13px;
@@ -89,7 +119,13 @@
           width: 285px;
           padding: 0 16px;
           text-align: right;
+          height: 40px;
+          float: right;
         }
+      }
+      .pricemark{
+        text-align: center;
+        font-size: 20px;
       }
       &__sell-info{
         display: flex;
