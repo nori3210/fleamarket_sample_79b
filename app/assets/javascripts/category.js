@@ -56,10 +56,8 @@ $(function(){
   });
   // 子カテゴリー選択後のイベント
   $('.form__group__category').on('change', '#child_category', function(){
-   console.log(1)
     var childId = document.getElementById('child_category').value; //選択された親カテゴリーの名前を取得
     if (childId != ""){ //子カテゴリーが初期値でないことを確認
-      console.log("test")
       $.ajax({
         url: '/items/category/get_category_grandchildren',
         type: 'GET',
@@ -67,7 +65,6 @@ $(function(){
         dataType: 'json'
       })
       .done(function(grandchildren){
-        debugger
         if (grandchildren.length != 0) {
           $('#grandchild_category').remove(); //子が変更された時、孫以下を削除する
          
