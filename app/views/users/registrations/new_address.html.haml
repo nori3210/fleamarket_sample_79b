@@ -1,0 +1,48 @@
+.single-container
+  %header.single-header
+    .single-header__logo
+      =link_to image_tag "logo-white.png", width:"185", height:"49"
+    %nav.single-header__progress
+      %ol.single-header__progress__text
+        %li.single-header__progress__text_address--active{ id: "first" }
+          .single-header__progress__text_address--active__text 会員情報
+          .single-header__progress_address__round--blue
+        %li.single-header__progress__text_address--tell
+          .single-header__progress__text_address--tell__text お届け先住所
+          .single-header__progress_address__round--blue_2
+        %li.single-header__progress__text_address--end{ id: "end" }
+          .single-header__progress__text_address--end__text 完了
+          .single-header__progress_address__round
+          
+  %main.single-address-main
+    %section.single-address-main__container
+      %h2.single-address-main__container__title
+        住所入力
+      .single-address-main__container__form__frame
+        = form_for @address do |f|
+          = render "devise/shared/error_messages", resource: @address
+          .form-group
+            = f.label :郵便番号
+            %span.form-group__require 必須
+            = f.text_field :postal_code,{autofocus: true, placeholder: "例）123-4567", class: 'form-group__input'}
+          .form-group
+            = f.label :都道府県
+            %span.form-group__require 必須
+            = f.select :prefecture, Address.prefectures.keys, {}, {class: 'form-group__prefecture'}
+          .form-group
+            = f.label :市町村
+            %span.form-group__require 必須
+            = f.text_field :city, autofocus: true, placeholder: "例）札幌市", class: 'form-group__input'
+          .form-group
+            = f.label :番地
+            %span.form-group__require 必須
+            = f.text_field :house_number, autofocus: true, placeholder: "例）青葉1-1-1", class: 'form-group__input'
+          .form-group
+            = f.label :建物名
+            %span.form-group__optional 任意
+            = f.text_field :building, autofocus: true, placeholder: "例）柳ビル103", class: 'form-group__input'
+          .form-group__end
+            = f.submit '完了', class: "btn-default__btn-blue", url: "complete_path"
+  .single-footer
+    .single-footer__logo
+      =link_to image_tag "logo-white.png", width:"185", height:"49"
