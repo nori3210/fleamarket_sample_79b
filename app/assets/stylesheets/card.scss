@@ -1,0 +1,87 @@
+.head{
+  height: 128px;
+  width: 100%;
+  text-align: center;
+  background-color: whitesmoke;
+  padding-top: 50px ;
+}
+.middle-credit{
+  margin: 15px;
+  background-color: white;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  h3{
+    font-weight: bold;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+  &__card-detail{
+    width: auto;
+    text-align: center;
+    font-weight: bold;
+    .number{
+      margin-bottom: 25px;
+    }
+    .cvc{
+      margin-bottom: 25px;
+    }
+    .date{
+      margin-bottom: 25px;
+    }
+    .bottom-btn{
+      display: inline-block;
+      font-size: 18px;
+      margin-top: 20px;
+      line-height: 48px;
+      background: #3CCACE;
+      border: 1px solid  #3CCACE;
+      color: white;
+      width: 250px;
+      font-size: 18px;
+      border-radius: 100px;
+      cursor: pointer;
+      margin-bottom: 25px;
+    }
+    .required{
+      background-color: #ff0211;
+      margin-left: 8px;
+      margin-right: 10px;
+      padding: 0 4px;
+      font-size: 15px;
+      line-height: 1.4em;
+      color: white;
+      border-radius: 2px;
+    }
+  }
+}
+
+  
+
+.footer {
+  text-align: center;
+  width: 100%;
+  padding: 40px 0 40px;
+  background-color: whitesmoke;
+  text-decoration: none;
+  ul {
+    list-style: none;
+    li {
+      font-size: 12px;
+      margin: 0 7px;
+      a {
+        color: black;
+      }
+      a:hover {
+        text-decoration: none;
+        opacity: 0.6;
+      }
+    }
+  }
+  .footer--logo {
+    display: inline-block;
+    margin-top: 30px;
+  }
+  p {
+    font-size: 12px;
+  }
+}

@@ -12,10 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2020_11_29_060810) do
 
+
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
+ActiveRecord::Schema.define(version: 2020_11_07_120550) do
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -24,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_060810) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
+
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "src", null: false
@@ -45,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_060810) do
     t.string "trading_status"
     t.integer "price"
     t.string "brand_id"
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
