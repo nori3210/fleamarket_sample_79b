@@ -79,9 +79,8 @@ gem 'active_hash'
 gem 'payjp'
 gem 'dotenv-rails'
 gem 'recaptcha',  require: "recaptcha/rails"
-
-
-
+gem 'active_hash'
+gem 'ancestry'
 group :production do
   gem 'unicorn'
 end

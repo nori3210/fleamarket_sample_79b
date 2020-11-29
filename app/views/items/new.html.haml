@@ -4,23 +4,28 @@
       = image_tag "logo.png", size: "200x58"
   .main
     .content 
-      
+      = render 'layouts/error', model: f.object
       .box
         .box__title
           %label 出品画像
           %span.box__title--required 必須
-        %p.box__file-info 最大10枚までアップロードできます
+        %p.box__file-info 最大5枚までアップロードできます
         .box__file
           .box__file__img
           .box__file__field
             = icon('fa', 'camera')
             %p 
               クリックしてファイルをアップロード
+          #image-box-1
+            .item-num-0#image-box__container
+            = f.fields_for :item_images do |i|
+              = i.file_field :src, type: 'file', name: "item[item_images_attributes][0][src]" ,style: "display:none", id:"img-file"
+              %label{for: "img-file"}
       .box
         .box__title
           %label 商品名
           %span.box__title--required 必須
-        = f.text_field :name, class: "box__input", id: "item-name-field", placeholder: "40文字まで"
+        = f.text_field :name, class: "box__input", placeholder: "40文字まで"
         %end
         .box__count
           %span.box__count--num#name-num 
@@ -38,23 +43,30 @@
         .box__title
           %label カテゴリー
           %span.box__title--required 必須
-        .form__group
-        
+        .form__group__category
+          = f.collection_select :category, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"},  {class: "box__category",id: 'parent_category'}
 
         .box__margin
         .box__title
           %label ブランド
           %span.box__title--optional 任意
+        .form__group
+        = f.text_field :brand_id, class: "box__input", id: "item-brand-field", placeholder: "例）シャネル"
         
         .box__margin
         .box__title
           %label 商品のサイズ
           %span.box__title--required 必須
+        .form__group
+        = f.collection_select :size_id, Size.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
         
         .box__margin
         .box__title
           %label 商品の状態
           %span.box__title--required 必須
+        .form__group
+        = f.collection_select :item_condition_id, Item_condition.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+      
       
       .box
         .box__info 
@@ -63,21 +75,31 @@
         .box__title
           %label 配送の方法
           %span.box__title--required 必須
+        .form__group
+        = f.collection_select :postage_type_id, Postage_type.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
     
         .box__margin
         .box__title
           %label 配送料の負担
           %span.box__title--required 必須
+        .form__group
+        = f.collection_select :postage_payer_id, Postage_payer.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+    
     
         .box__margin
         .box__title
           %label 発送元の地域
           %span.box__title--required 必須
+        .form__group
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
       
         .box__margin
         .box__title
           %label 発送までの日数
           %span.box__title--required 必須
+        .form__group
+        = f.collection_select :estimated_shipping_date_id, Estimated_shipping_date.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+      
 
       .box#price-box
         .box__info 
@@ -87,8 +109,8 @@
           .box__title
             %label 販売価格
             %span.box__title--required 必須
-          .box__unit ￥
-          = f.number_field :price, class: "box__input--input-price", placeholder: "0", min: 300, max: 9999999
+        .pricemark￥
+        = f.number_field :price, class: "box__input--input-price", placeholder: "0", min: 300, max: 9999999
         .box__margin
         .box__sell-info
           .box__sell-info--title 販売手数料（10%）
