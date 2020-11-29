@@ -1,0 +1,27 @@
+.toppage-header
+  = render "shared/header"
+
+.mypage
+  .mymain
+    = render  'mypage-side'
+
+    .myright
+      %p プロフィール
+      .right-top
+        .right-top__bg-mask
+          .right-top__bg-mask--avatar
+          .right-top__bg-mask--nickname
+            %p
+              -#デバイスcurrent.user記入
+      .preface
+        = form_tag "#" do
+          %textarea
+            前書き・自己紹介等
+            
+      .change-btn
+        = button_tag "", type: 'submit' do
+          変更する
+
+
+-# --------------------------------------
+= render "shared/footer"

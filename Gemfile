@@ -74,6 +74,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem 'fog-aws'
+
+gem 'payjp'
 gem 'dotenv-rails'
 gem 'recaptcha',  require: "recaptcha/rails"
 gem 'active_hash'
