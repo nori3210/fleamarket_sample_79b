@@ -43,8 +43,8 @@
         .box__title
           %label カテゴリー
           %span.box__title--required 必須
-        .form__group
-        
+        .form__group__category
+          = f.collection_select :category, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"},  {class: "box__category",id: 'parent_category'}
 
         .box__margin
         .box__title

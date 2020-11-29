@@ -107,6 +107,15 @@
           position: relative;
         }
       }
+      &__category{
+        height: 48px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        padding: 0 5px 0 10px;
+        outline: none;
+      }
       &__input{
         height: 48px;
         width: 100%;
