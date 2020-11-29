@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'homes#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -15,4 +14,25 @@ Rails.application.routes.draw do
     get 'users/sign_up/complete', to: 'users/registrations#complete'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+
+  root 'homes#index'
+  resources :items
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'index', to: 'card#index'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#destroy'
+    end
+  end
+  resources :users
+  resources :buyers do
+    collection do 
+      get  'done'
+    end
+  end
+
+  resources :sellers, only: index
 end
+
+

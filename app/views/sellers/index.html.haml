@@ -1,0 +1,58 @@
+.seller
+  =render  "shared/header"
+  .product-main
+    .product-main__inner
+      .product-main__inner__name コーラ
+      .product-main__inner__box
+        .product-main__inner__box__photo
+          =image_tag 'icon-02.png', size: '300x300', class:'photo'
+        .product-main__inner__box__list
+          %table{:border=>'1'} 
+            %thead
+              %tr
+                %th 出品者
+                %td マツ
+              %tr
+                %th カテゴリー
+                %td 飲料
+              %tr
+                %th ブランド
+                %td コーラー
+              %tr
+                %th 商品サイズ
+                %td 1.5
+              %tr
+                %th 商品の状態
+                %td 新品
+              %tr
+                %th 配送料の負担
+                %td 送料込み(出品者負担)
+              %tr
+                %th 配送の方法
+                %td 西濃
+              %tr
+                %th 配送元地域
+                %td 奈良
+              %tr
+                %th 発送日の目安
+                %td 2~3日で発送
+      .product-main__inner__box__price
+        .product-main__inner__box__price__sum ¥150円
+        .product-main__inner__box__price__tax (税込み)
+        .product-main__inner__box__price__postage 送料込み
+      = button_to '購入画面に進む', '/', class:'product-main__inner__box__btn'
+      .product-main__inner__box__descripton
+        %p.product-main__inner__box__descripton__text
+        東京産
+        期間限定
+      .product-main__inner__box__report
+        =button_to 'いいね', '/', class:'product-main__inner__box__report__left'
+        =button_to '不適切な商品の報告', '/', class:'product-main__inner__box__report__right'
+    .product-main__message
+      %p.product-main__message__top
+      相手のことを考え丁寧なコメントを心がけましょう。
+      %br 不快な言葉づかいなどは利用制限や退会処分となることがあります。
+      = form_with model:@user do |f|
+        = f.text_area :comment, class:'product-main__message__comment'
+      = button_to 'コメントする', '/', class:'product-main__message__btn'
+  = render "shared/footer"

@@ -1,0 +1,89 @@
+
+.aboveFooter{
+  padding: 130px 40px;
+  position: relative;
+  background-image: image-url("bg-appBanner-pict");
+  background-size: cover;
+  background-position: center;
+  .aboveContents{
+    text-align: center;
+    height: 140px;
+    color: white;
+    &__title{
+      font-size: 24px;
+      line-height: 1.4;
+      position: relative;
+      text-shadow: 0 0 5px gray;
+    }
+    &__text{
+      font-size: 35px;
+      line-height: 1.4;
+      text-shadow: 0 0 5px gray;
+    }
+    .contentBtn{
+      display: flex;
+      margin: 24px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      .appleBtn{
+        width: 205px;
+        margin-right: 10px;
+        height: 60px;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+      .googleBtn{
+        width: 205px;
+        margin-right: 10px;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.foot{
+  padding: 60px 0px;
+  text-align: center;
+  color: white;
+  background-color: #272727;
+  .footBox{
+    max-width: 840px;
+    list-style: none;
+    display: flex;
+    margin: 0 auto;
+    .footContents{
+      margin: 0 auto;
+      &__head{
+        line-height: 1.4;
+        margin: 0 0 20px;
+        font-size: 16px;
+      }
+      .footContent{
+        font-size: 12px;
+        list-style: none;
+        line-height: 1.4;
+        a{
+          color: white;
+          text-decoration: none;
+        }
+        li{
+          height: 32px;
+        }
+      }
+    }
+  }
+  &__logo{
+    margin: 0 auto;
+    .logoImage{
+      max-width: 160px;
+      width: 100%;
+    }
+  }
+  .symbolMark{
+    font-size: 14px;
+  }
+}

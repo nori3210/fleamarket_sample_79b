@@ -76,6 +76,11 @@ gem 'jquery-rails'
 gem 'fog-aws'
 gem 'active_hash'
 
+gem 'payjp'
+gem 'dotenv-rails'
+gem 'recaptcha',  require: "recaptcha/rails"
+
+
 
 group :production do
   gem 'unicorn'
