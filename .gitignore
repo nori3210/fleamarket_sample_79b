@@ -31,3 +31,4 @@
 yarn-debug.log*
 .yarn-integrity
 .env
+db/migrate/20201010075413_devise_create_users.rb
