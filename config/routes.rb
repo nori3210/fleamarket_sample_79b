@@ -42,7 +42,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sellers, only: index
+  resources :sellers, only: :index
 end
+end
+
 
 
