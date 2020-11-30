@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_060810) do
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,36 +54,37 @@ ActiveRecord::Schema.define(version: 2020_11_29_060810) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "size_id", null: false
-    t.integer "item_condition_id", null: false
-    t.integer "postage_payer_id", null: false
-    t.integer "postage_type_id", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "estimated_shipping_date_id", null: false
-    t.text "item_description", null: false
-    t.integer "price", null: false
-    t.string "brand_id"
+    t.string "name"
+    t.integer "size_id"
+    t.integer "item_condition_id"
+    t.integer "postage_payer_id"
+    t.integer "postage_type_id"
+    t.integer "prefecture_id"
+    t.integer "estimated_shipping_date_id"
+    t.text "item_description"
     t.string "trading_status"
+    t.integer "price"
+    t.string "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
     t.string "familyname", null: false
-    t.string "firstname", null: false
     t.string "familyname_kana", null: false
-    t.string "firstname_kana", null: false
-    t.date "bairthday", null: false
+    t.string "firstname", null: false
+    t.string "firstname_kama", null: false
+    t.date "birthday", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
