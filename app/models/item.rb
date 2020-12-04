@@ -12,6 +12,7 @@ class Item < ApplicationRecord
     validates :estimated_shipping_date_id
     validates :price
     validates :trading_status
+    validates :brand_id
   end
   belongs_to :category
   has_many :item_images, dependent: :destroy
