@@ -3,7 +3,6 @@ class Item < ApplicationRecord
   validates :item_description, length: { in: 1..1000 }
 
   with_options presence: true do
-    validates :category
     validates :size_id
     validates :item_condition_id
     validates :postage_payer_id
@@ -12,7 +11,6 @@ class Item < ApplicationRecord
     validates :estimated_shipping_date_id
     validates :price
     validates :trading_status
-    validates :brand_id
   end
   belongs_to :category
   has_many :item_images, dependent: :destroy
