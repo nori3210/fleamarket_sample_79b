@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy, :show]
 
   def new
     @item = Item.new
@@ -48,6 +48,10 @@ class ItemsController < ApplicationController
     else
       alert('削除できませんでした')
     end
+  end
+
+  def show
+    
   end
 
   private

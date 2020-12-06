@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .seller {
-  text-align: center;
+  
   background: #f5f5f5;
   width: 100vw;
   .product-main{
@@ -15,6 +15,7 @@
         font-weight: bold;
         font-size: 30px;
         padding: 20px 16px;
+        text-align: center;
       }
       &__box{
         display: flex;
@@ -34,7 +35,10 @@
         }
         td{
           width: 60%;
+          font-size:  15px;
+          padding: 0 5px;
         }
+        
         &__price {
           display: flex;
           justify-content: center;
