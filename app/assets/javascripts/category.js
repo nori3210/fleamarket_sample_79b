@@ -8,7 +8,7 @@ $(function(){
   // 子カテゴリーの表示作成
   function appendChildrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<select class="box__input" id="child_category" name="item[category]"><option value="">選択してください</option>
+    childSelectHtml = `<select class="box__input" id="child_category" name="item[category_id]"><option value="">選択してください</option>
                           ${insertHTML}
                        </select>`;
     $('.form__group__category').append(childSelectHtml);
@@ -16,7 +16,7 @@ $(function(){
   // 孫カテゴリーの表示作成
   function appendGrandchildrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<select class="box__input" id="grandchild_category" name="item[category]">
+    grandchildSelectHtml = `<select class="box__input" id="grandchild_category" name="item[category_id]">
                               <option value="">選択してください</option>
                               ${insertHTML}
                             </select>`;

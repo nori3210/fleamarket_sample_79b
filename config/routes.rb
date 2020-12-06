@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
   end
-
+  resources :users
   resources :item_images
   resources :buyers do
 
@@ -35,16 +35,15 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#destroy'
     end
   end
-  resources :users
-  resources :buyers do
+  
     collection do 
       get  'done'
     end
   end
 
-  resources :sellers, only: :index
+  # resources :sellers, only: :index
 end
-end
+
 
 
 
