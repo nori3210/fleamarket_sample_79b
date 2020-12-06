@@ -76,7 +76,7 @@
           %label 配送の方法
           %span.box__title--required 必須
         .form__group
-        = f.collection_select :postage_type_id, PostagetType.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+        = f.collection_select :postage_type_id, PostageType.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
     
         .box__margin
         .box__title
