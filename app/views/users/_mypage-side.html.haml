@@ -38,7 +38,7 @@
   %h3 ログアウト
   %ul.nav-bottom
     %li
-      = link_to 'ログアウト', ""
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
       = icon('fa', 'angle-right', class: "icon-possition")
 
 
