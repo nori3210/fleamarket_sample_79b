@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :bairthday,presence: true
 
   has_one :address
+  has_many  :items
 end
 
 

@@ -53,7 +53,11 @@
           = ('¥' + @item.price.to_s(:delimited))
         .product-main__inner__box__price__tax (税込み)
         .product-main__inner__box__price__postage 送料込み
-      = button_to '購入画面に進む', '/', class:'product-main__inner__box__btn'
+      - if user_signed_in? && current_user.id == @item.user_id
+        //= button_to '編集', edit_item_path(@item.id), class: 'product-main__inner__box__edit'
+        = button_to "削除", item_path(@item.id), method: :delete, data: { confirm: "本当に削除しますか？" } , class: 'product-main__inner__box__delete'
+      - else
+        = button_to '購入画面に進む', '/', class:'product-main__inner__box__btn'
       .product-main__inner__box__descripton
         %p.product-main__inner__box__descripton__text
         東京産
