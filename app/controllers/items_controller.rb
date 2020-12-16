@@ -22,11 +22,15 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    if user_signed_in?
+      @item = Item.new(item_params)
+      if @item.save
+        redirect_to root_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to root_path
     end
   end
 
