@@ -1,8 +1,6 @@
 class Address < ApplicationRecord
-  validates :postal_code ,null: false
-  validates :prefcture ,null: false
-  validates :city ,null: false
-  validates :house_number ,null: false
+  validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, multiline: true}
+  validates :postal_code,:prefecture,:city, :house_number, presence: true
   # validates :user_id ,null: false
   belongs_to :user
   enum prefecture:{

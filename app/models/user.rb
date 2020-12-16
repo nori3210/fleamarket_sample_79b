@@ -15,6 +15,7 @@ class User < ApplicationRecord
   # validates :bairthday, numericality:{ only_integer: true }
   validates :bairthday,presence: true
 
+
   has_one :address
   has_many  :items
 end
