@@ -16,6 +16,11 @@ class User < ApplicationRecord
   validates :bairthday,presence: true
 
   has_one :address
+
+  has_one :card, dependent: :destroy
+
+  has_many :items
+  has_many :buyers
 end
 
 

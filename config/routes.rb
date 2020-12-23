@@ -23,27 +23,26 @@ Rails.application.routes.draw do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources :buyers, only: [:index] do
+      collection do 
+        get 'done', to: 'buyers#done'
+        post 'pay', to: 'buyers#pay'
+      end
+    end
   end
   resources :users
   resources :item_images
-  resources :buyers do
+  #resources :buyers do
 
-  resources :card, only: [:new, :show] do
+  resources :card, only: [:new, :show, :destroy] do
     collection do
       post 'index', to: 'card#index'
       post 'pay', to: 'card#pay'
       post 'delete', to: 'card#destroy'
     end
   end
-  
-    collection do 
-      get  'done'
-    end
-  end
-
   # resources :sellers, only: :index
 end
-
 
 
 

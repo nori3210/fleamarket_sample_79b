@@ -22,11 +22,15 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    if user_signed_in?
+      @item = Item.new(item_params)
+      if @item.save
+        redirect_to root_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -51,13 +55,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   private
 
     def item_params
-       params.require(:item).permit(:name, :item_description,  :brand_id, :category_id, :size_id, :item_condition_id, :postage_type_id, :postage_payer_id, :prefecture_id, :estimated_shipping_date_id, :price, item_images_attributes: [:src]).merge(trading_status:"出品中")
+       params.require(:item).permit(:name, :item_description,  :brand_id, :category_id, :size_id, :item_condition_id, :postage_type_id, :postage_payer_id, :prefecture_id, :estimated_shipping_date_id, :price, item_images_attributes: [:src]).merge(user_id: current_user.id,trading_status:"出品中")
     end
 
     def set_item
@@ -65,3 +69,5 @@ class ItemsController < ApplicationController
     end
 
   end
+
+
