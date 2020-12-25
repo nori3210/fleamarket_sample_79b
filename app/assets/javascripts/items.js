@@ -12,7 +12,6 @@ $(function(){
 
       
   $('.box__file__field').on('click', function(){
-    console.log(1)
     const fileField = $('input[type="file"]:last');
     fileField.trigger('click');
   })

@@ -19,7 +19,6 @@ class CardController < ApplicationController
         redirect_to card_path(current_user.id)
       else
         redirect_to item_buyers_path(@item)
-
       end
     end
   end

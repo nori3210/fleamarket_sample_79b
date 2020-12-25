@@ -21,8 +21,11 @@ class BuyersController < ApplicationController
       :customer => @card.customer_id,
       :currency => 'jpy',
     )
-    @item.update!(trading_status: "売却済")
-    redirect_to  done_item_buyers_path, item_id: @item
+    if @item.update!(trading_status: "売却済")
+      redirect_to  done_item_buyers_path, item_id: @item
+    else
+      redirect_to  item_buyers_path(@item)
+    end
   end
 
   def done
