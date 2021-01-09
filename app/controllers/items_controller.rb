@@ -58,6 +58,10 @@ class ItemsController < ApplicationController
 
   end
 
+  def index
+  end
+  
+
   private
 
     def item_params
