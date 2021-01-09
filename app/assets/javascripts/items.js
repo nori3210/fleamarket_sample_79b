@@ -1,4 +1,4 @@
-$(function(){
+document.addEventListener("turbolinks:load", (function(){
   //プレビューのhtmlを定義
   function buildHTML (index) {
     var html = `<div id="image-box-1">
@@ -12,6 +12,7 @@ $(function(){
 
       
   $('.box__file__field').on('click', function(){
+
     // const fileField = $('input[type="file"]:last');
     const fileField = $(".test:last");
     fileField.trigger('click');
@@ -78,6 +79,7 @@ $(document).on("click", '.item-image__operation--delete', function(){
   target_image.remove();
 
 })
-});
+})
+);
 
 
