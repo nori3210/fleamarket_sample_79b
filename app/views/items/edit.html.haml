@@ -1,0 +1,147 @@
+= form_for @item do |f|
+  .head
+    .head__icon
+      = image_tag "logo.png", size: "200x58"
+  .main
+    .content 
+      = render '/layouts/error', model: f.object
+      .box
+        .box__title
+          %label 出品画像
+          %span.box__title--required 必須
+        %p.box__file-info 最大5枚までアップロードできます
+        .box__file
+          .box__file__img
+          .box__file__field
+            = icon('fa', 'camera')
+            %p 
+              クリックしてファイルをアップロード
+          .image-box-1
+            .item-num-0#image-box__container
+            = f.fields_for :item_images do |i|
+              -# = i.file_field :src, type: 'file', name: "item[item_images_attributes][0][src]",style: "display:none", id:"img-file"
+              = i.file_field :src, type: 'file', id:"img-file", data: {index: i.index}, class:"test", style: "display:none"
+              %label{for: "img-file"}
+      .box
+        .box__title
+          %label 商品名
+          %span.box__title--required 必須
+        = f.text_field :name, class: "box__input", placeholder: "40文字まで"
+        %end
+        .box__count
+          %span.box__count--num#name-num 
+        .box__margin
+        .box__title
+          %label 商品の説明
+          %span.box__title--required 必須
+        = f.text_area :item_description, class: "box__input",  placeholder: "商品の説明（必須 1,000文字以内）#{"\n"}（色、素材、重さ、定価、注意点など）#{"\n\n"}例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .box__count
+          %span.box__count--num#description-num 
+      .box
+        .box__info 
+          %label 商品の詳細
+        
+        .box__title
+          %label カテゴリー
+          %span.box__title--required 必須
+        .form__group__category
+          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"},  {class: "box__category",id: 'parent_category'}
+
+        .box__margin
+        .box__title
+          %label ブランド
+          %span.box__title--optional 任意
+        .form__group
+        = f.text_field :brand_id, class: "box__input", id: "item-brand-field", placeholder: "例）シャネル"
+        
+        .box__margin
+        .box__title
+          %label 商品のサイズ
+          %span.box__title--required 必須
+        .form__group
+        = f.collection_select :size_id, Size.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+        
+        .box__margin
+        .box__title
+          %label 商品の状態
+          %span.box__title--required 必須
+        .form__group
+        = f.collection_select :item_condition_id, ItemCondition.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+      
+      
+      .box
+        .box__info 
+          %label 配送について
+          %a.box__info--link 
+        .box__title
+          %label 配送の方法
+          %span.box__title--required 必須
+        .form__group
+        = f.collection_select :postage_type_id, PostageType.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+    
+        .box__margin
+        .box__title
+          %label 配送料の負担
+          %span.box__title--required 必須
+        .form__group
+        = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+    
+    
+        .box__margin
+        .box__title
+          %label 発送元の地域
+          %span.box__title--required 必須
+        .form__group
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+      
+        .box__margin
+        .box__title
+          %label 発送までの日数
+          %span.box__title--required 必須
+        .form__group
+        = f.collection_select :estimated_shipping_date_id, EstimatedShippingDate.all, :id, :name,{prompt: "選択してください"}, {class: "box__input"}
+      
+
+      .box#price-box
+        .box__info 
+          %label 価格（¥300〜9,999,999）
+          %a.box__info--link 
+        .flex-box
+          .box__title
+            %label 販売価格
+            %span.box__title--required 必須
+        .pricemark￥
+        = f.number_field :price, class: "box__input--input-price", placeholder: "0", min: 300, max: 9999999
+        .box__margin
+        .box__sell-info
+          .box__sell-info--title 販売手数料（10%）
+        .box__sell-info#sell-profit-box
+          .box__sell-info--title 販売利益
+        .box__btn-wrapper
+          = f.submit "変更する", class: "box__btn-wrapper__submit-btn"
+          = link_to "#", class:"box__btn-wrapper__back-btn" do
+            戻る
+        %p.box__attention
+          禁止されている
+          = link_to "行為"
+          および
+          = link_to "出品物" 
+          を必ずご確認ください。
+          = link_to "偽ブランド品" 
+          や
+          = link_to "盗品物" 
+          などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+          = link_to "加盟店規約" 
+          に同意したことになります。
+          
+  .footer
+    %ul 
+      %li
+        = link_to "プライバシーポリシー" 
+      %li
+        = link_to "メルカリ利用規約" 
+      %li
+        = link_to "特定商取引に関する表記" 
+    = link_to "#", class: "footer--logo" do
+      = image_tag "logo-white.png", size: "150x44"
+    %p &copy; FRIMA, Inc.
