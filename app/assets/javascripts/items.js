@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", (function(){
   //プレビューのhtmlを定義
   function buildHTML (index) {
-    var html = `<div id="image-box-1">
+    var html = `<div class="image-box-1">
                 <div class="item-num-0" id="image-box__container"></div>
                 <input type="file" name="item[item_images_attributes][${index}][src]" id="img-file" data-index="${index}" class="test">
                 <label for="img-file"></label>
@@ -23,9 +23,9 @@ document.addEventListener("turbolinks:load", (function(){
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
 
-  $('.image-box-1').on('change', `input[type="file"]`, function(e) {
+  $('.box__file').on('change', `input[type="file"]`, function(e) {
   //fileIndexの先頭の数字を使ってinputを作る
-    $('.image-box-1').append(buildHTML(fileIndex[0]));
+    $('.box__file').append(buildHTML(fileIndex[0]));
     fileIndex.shift();
     //末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)

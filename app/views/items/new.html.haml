@@ -20,8 +20,9 @@
             .item-num-0#image-box__container
             = f.fields_for :item_images do |i|
               -# = i.file_field :src, type: 'file', name: "item[item_images_attributes][0][src]",style: "display:none", id:"img-file"
-              = i.file_field :src, type: 'file', id:"img-file", data: {index: i.index}, class:"test", style: "display:none"
+              = i.file_field :src, type: 'file', id:"img-file", data: {index: i.index}, class:"test"
               %label{for: "img-file"}
+
       .box
         .box__title
           %label 商品名
