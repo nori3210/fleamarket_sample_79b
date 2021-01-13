@@ -25,33 +25,118 @@ Things you may want to cover:
 
 
 ## usersテーブル
-
 |Column|Type|Option|
 |------|----|------|
 |nickname|string|null: false, unique: true, index:true|
-|email|string|null: false, unique: true, index:true|
-|password|string|null: false|
+|email|string|null: false, unique: true, default: ""|
+|encrypted_password|string|null: false, default: ""|
 |familyname|string|null: false|
 |familyname_kana|string|null: false|
 |firstname|string|null: false|
 |firstname_kana|string|null: false|
 |birthday|date|null: false|
-|address_id|references|null: false, foreign_key: true|
-|payment_id|references|null: false, foreign_key: true|
-
+|reset_password_token|string|
+|reset_password_sent_at|datetime|
+|remember_created_at|datetime|
 ### Association
-- has_many :seller_items, foreign_key"seller_id", class_name: "items"
-- has_many :buyer_items, foreign_key"buyer_id", class_name: "items"
-- has_many :comments
-- has_many :items, through: :comments, dependent: :destroy
-- has_many :goods
-- has_many :items, through: :goods, dependent: :destroy
-- has_many :payments, dependent: :destroy
-- belongs_to :confirm
-- belongs_to :profile
+- has_one :adress
+- has_one :card, dependent: :destroy
+- has_many :items
+- has_many :buyers
 
 
-## profilesテーブル
+## adressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer|
+|prefecture|integer|
+|city|text|
+|house_number|text|
+|building|text|
+|telephone|integer|
+|user_id|integer|
+### Association
+belongs_to :user, optional: true
+
+
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false, index:true|
+|size_id|integer|null: false|
+|item_condition_id|integer|null: false|
+|postage_payer_id|integer| null: false|
+|postage_type_id|integer|null: false|
+|prefecture_id|integer|null: false|
+|estimated_shipping_date_id|integer|null: false|
+|item_description|text|null: false|
+|price|integer|null: false|
+|brand_id|string|foreign_key: true|
+|trading_status|string|
+|user|references|
+|category_id|string|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :brand, optional: true
+- belongs_to :category, optional: true
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :size
+- belongs_to_active_hash :item_condition
+- belongs_to_active_hash :postage_payer
+- belongs_to_active_hash :estimated_shipping_date
+- belongs_to_active_hash :postage_type
+- has_one :buyer
+- has_many :item_images, dependent: :destroy
+- accepts_nested_attributes_for :item_images, allow_destroy: true
+
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+### Association
+- belongs_to :user
+
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, index: true|
+### Association
+- has_many :items
+
+
+## item_imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|src|string|null: false|
+|item|references|null: false, foreign_key: true|
+### Association
+- belongs_to :item, optional: true
+
+
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :items
+
+
+## buyersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user, optional: true
+- belongs_to :item, optional: true
+
+
+
+<!-- ## profilesテーブル
 
 |Column|Type|Option|
 |------|----|------|
@@ -63,10 +148,10 @@ Things you may want to cover:
 |telephone|integer|
 
 ### Association
-- belongs_to :user
+- belongs_to :user -->
 
 
-## paymentsテーブル
+<!-- ## paymentsテーブル
 
 |Column|Type|Option|
 |------|----|------|
@@ -74,81 +159,14 @@ Things you may want to cover:
 |card_number|integer|null: false|
 |expiration_year|integer|null: false|
 |expiration_month|integer|null: false|
-|security_code|integer|null: false|
+|security_code|integer|null: false| -->
 
-### Association
+<!-- ### Association
 - belongs_to :user
-- belongs_to :confirm
+- belongs_to :confirm -->
 
 
-## itemsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|integer|null:false, index:true|
-|description|text|null: false|
-|status_id|references|null: false, foreign_key: true|
-|condition_id|references|null: false, foreign_key: true|
-|listing_time|timestamp|null: false|
-|seller|references|null: false, foreign_key: true|
-|buyer|references|null: false, foreign_key: true|
-|brand_name_id|references|foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
-|img_id|references|foreign_key: true|
-|postage_payer_id|references|null: false, foreign_key: true|
-|purchase_time|timestamp|null: false|
-|shipment_source|string|null: false|
-|days_to_ship|string|null: false|
-|price|integer|null: false|
-
-### Association
-
-- has_many  :item_images, dependent: :destroy 
-- has_many  :comments, dependent: :destroy 
-- has_many  :users, through: :comments, dependent: :destroy 
-- has_many  :goods, dependent: :destroy 
-- has_many  :user, through: :goods, dependent: :destroy
-- belongs_to  :seller, class_name:"user"
-- belongs_to  :buyer, class_name:"user
-- belongs_to_active_hash  :brand
-- belongs_to_active_hash  :category
-- belongs_to_active_hash  :status
-- belongs_to_active_hash  :condition
-- belongs_to_active_hash  :postage_payer
-- belongs_to_active_hash  :confirm
-
-
-### brandsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|brand_name|string|null: false, index: true|
-
-### Association
-
-- belongs_to  :item
-
-
-### item_imagesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|item_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to  :item
-
-
-### categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-
-### Association
-- belongs_to  :item
-
-
-### statusesテーブル
+<!-- ### statusesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -156,10 +174,10 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to  :item
+- belongs_to  :item -->
 
 
-### conditionsテーブル
+<!-- ### conditionsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -167,20 +185,20 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to  :item
+- belongs_to  :item -->
 
 
-### postage_payersテーブル
+<!-- ### postage_payersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postage_payer|string|null :false|
 
 ### Association
 
-- belongs_to  :item
+- belongs_to  :item -->
 
 
-### commentsテーブル
+<!-- ### commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|	
@@ -191,10 +209,10 @@ Things you may want to cover:
 ### Association
 
 - belongs_to : item
-- belongs_to : user
+- belongs_to : user -->
 
 
-## goodsテーブル
+<!-- ## goodsテーブル
 
 |Column|Type|Option|
 |------|----|------|
@@ -203,10 +221,10 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :item
+- belongs_to :item -->
 
 
-## confirmsテーブル
+<!-- ## confirmsテーブル
 
 |Column|Type|Option|
 |------|----|------|
@@ -218,7 +236,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :payment
+- belongs_to :payment -->
 
 
 
