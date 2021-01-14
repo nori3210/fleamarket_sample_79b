@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item.item_images.build
     render layout: 'application'
     grandchild_category = @item.category
     child_category = grandchild_category.parent
@@ -61,6 +62,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
+      @item.item_images.build
       render :edit
     end
   end

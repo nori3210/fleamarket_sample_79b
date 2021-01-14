@@ -32,11 +32,8 @@ document.addEventListener("turbolinks:load", (function(){
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
-  
       //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
-      //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
-      file_field.files = dataBox.files
       var num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
        //画像が5枚になったら超えたらドロップボックスを削除する
@@ -75,6 +72,8 @@ var file_field = document.querySelector('input[type=file]')
 $(document).on("click", '.item-image__operation--delete', function(){
   //プレビュー要素を取得
   var target_image = $(this).parent().parent()
+  const index = $(this).parent().parent().data("index")
+  $(`#item_item_images_attributes_${index}__destroy`).prop('checked', true);
   //プレビューを削除
   target_image.remove();
 
