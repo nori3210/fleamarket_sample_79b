@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", (function(){
   //プレビューのhtmlを定義
   function buildHTML (index) {
-    var html = `<div id="image-box-1">
+    let html = `<div class="image-box-1">
                 <div class="item-num-0" id="image-box__container"></div>
                 <input type="file" name="item[item_images_attributes][${index}][src]" id="img-file" data-index="${index}" class="test">
                 <label for="img-file"></label>
@@ -23,21 +23,18 @@ document.addEventListener("turbolinks:load", (function(){
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
 
-  $('.image-box-1').on('change', `input[type="file"]`, function(e) {
+  $('.box__file').on('change', `input[type="file"]`, function(e) {
   //fileIndexの先頭の数字を使ってinputを作る
-    $('.image-box-1').append(buildHTML(fileIndex[0]));
+    $('.box__file').append(buildHTML(fileIndex[0]));
     fileIndex.shift();
     //末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
-      var fileReader = new FileReader();
-  
+      let fileReader = new FileReader();
       //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
-      //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
-      file_field.files = dataBox.files
-      var num = $('.item-image').length + 1 + i
+      let num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
        //画像が5枚になったら超えたらドロップボックスを削除する
       if (num == 5){
@@ -45,8 +42,8 @@ document.addEventListener("turbolinks:load", (function(){
       }
       //読み込みが完了すると、srcにfileのURLを格納
       fileReader.onloadend = function() {
-        var src = fileReader.result
-        var html= `<div class='item-image' data-image="${file.name}">
+        let src = fileReader.result
+        let html= `<div class='item-image' data-image="${file.name}">
                     <div class=' item-image__content'>
                       <div class='item-image__content--icon'>
                         <img src=${src} width="124" height="80" >
@@ -66,15 +63,17 @@ document.addEventListener("turbolinks:load", (function(){
   
     });
   });
-  var dataBox = new DataTransfer();
+  let dataBox = new DataTransfer();
 //querySelectorでfile_fieldを取得
-var file_field = document.querySelector('input[type=file]')
+let file_field = document.querySelector('input[type=file]')
 
 
 //削除ボタンをクリックすると発火するイベント
 $(document).on("click", '.item-image__operation--delete', function(){
   //プレビュー要素を取得
-  var target_image = $(this).parent().parent()
+  let target_image = $(this).parent().parent()
+  const index = $(this).parent().parent().data("index")
+  $(`#item_item_images_attributes_${index}__destroy`).prop('checked', true);
   //プレビューを削除
   target_image.remove();
 

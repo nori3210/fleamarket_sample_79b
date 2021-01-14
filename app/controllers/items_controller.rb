@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy, :show]
+  before_action :redirect_to_log_in, only: [:new, :create]
 
   def new
     @item = Item.new
@@ -22,26 +23,43 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   def create
-    if user_signed_in?
-      @item = Item.new(item_params)
-      if @item.save
-        redirect_to root_path
-      else
-        render :new
-      end
-    else
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to root_path
+    else
+      render :new
     end
   end
 
   def edit
+    @item.item_images.build
     render layout: 'application'
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+
   end
 
   def update
     if @item.update(item_params)
       redirect_to root_path
     else
+      @item.item_images.build
       render :edit
     end
   end
@@ -63,6 +81,9 @@ class ItemsController < ApplicationController
   
 
   private
+    def redirect_to_log_in
+      redirect_to new_user_session_path unless user_signed_in?
+    end
 
     def item_params
        params.require(:item).permit(:name, :item_description,  :brand_id, :category_id, :size_id, :item_condition_id, :postage_type_id, :postage_payer_id, :prefecture_id, :estimated_shipping_date_id, :price, item_images_attributes: [:id, :src, :_destroy]).merge(user_id: current_user.id,trading_status:"出品中")
