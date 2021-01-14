@@ -19,12 +19,19 @@ class Item < ApplicationRecord
     validates :estimated_shipping_date_id
     validates :price
     validates :trading_status
+    validates :item_images, presence: true
   end
+
+  # validate :require_any_item_image
+  # def require_any_item_image
+  #   errors.add(:base, :no_item_image) if item_images.blank?
+  # end
+
   belongs_to :brand, optional: true
-  belongs_to :user
   belongs_to :category, optional: true
   has_many :item_images, dependent: :destroy
   accepts_nested_attributes_for :item_images, allow_destroy: true
 
-
+  belongs_to :user
+  has_one :buyer
 end
