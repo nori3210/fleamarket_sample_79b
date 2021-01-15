@@ -37,6 +37,10 @@ class BuyersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    prefecture = Prefecture.data[:id]
+  end
+
   private
 
   def set_card
