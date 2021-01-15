@@ -45,7 +45,7 @@ Things you may want to cover:
 - has_many :buyers
 
 
-## adressesテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|
