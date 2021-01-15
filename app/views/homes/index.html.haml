@@ -93,7 +93,9 @@
                 = link_to item_path(item.id) do
                   = image_tag "#{item.item_images[0].src}" ,class: "main__pickup__product__lists__list__img"
                     -if item.buyer.present?
-                    売り切れました
+                    .main__pickup__product__lists__list__img__sold
+                      .main__pickup__product__lists__list__img__sold__detail
+                        SOLD
                 .main__pickup__product__lists__list__text
                   .main__pickup__product__lists__list__text__name
                   = item.name
@@ -117,7 +119,9 @@
                 = link_to item_path(item.id) do
                   = image_tag "#{item.item_images[0].src}" ,class: "main__pickup__product__lists__list__img"
                     -if item.buyer.present? 
-                    売り切れました
+                    .main__pickup__product__lists__list__img__sold
+                      .main__pickup__product__lists__list__img__sold__detail
+                        SOLD
                 .main__pickup__product__lists__list__text
                   .main__pickup__product__lists__list__text__name
                   = item.name

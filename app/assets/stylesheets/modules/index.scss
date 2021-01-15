@@ -238,6 +238,7 @@
           //width: 220px;
           display: inline-block;
           float: left;
+          position: relative;
           &__img{
             width: 220px;
             height: 150px;
@@ -270,6 +271,27 @@
               }
               .fav{
                 margin-left: 90px;
+              }
+            }
+          }
+          &__img{
+            &__sold{
+              width: 0;
+              height: 0;
+              border-top: 60px solid skyblue ;
+              border-right: 60px solid transparent;
+              border-bottom: 60px solid transparent;
+              border-left: 60px solid skyblue ;
+              z-index:100;
+              position: absolute;
+              text-decoration: none;
+              &__detail{
+                transform: rotate(-45deg);
+                font-size: 25px;
+                margin:-35px 0px 0px -55px;
+                color: #fff;
+                letter-spacing: 2px;
+                font-weight: 600;
               }
             }
           }
