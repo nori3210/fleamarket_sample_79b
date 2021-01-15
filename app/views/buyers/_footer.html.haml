@@ -1,12 +1,11 @@
 .footer
-  %li.footer__box
-    %ul.login__footer__box__list
-      =link_to '/' do
-        プライバシーポリシー
-      =link_to '/' do
-        フリマ利用規約
-      =link_to '/' do
-        特定商取引に関する表記
-        =link_to '/' do
-          = image_tag 'logo-white.png', size: '130x50',class:'image'
-  %p© Mercari, Inc
+  %ul 
+    %li
+      = link_to "プライバシーポリシー" 
+    %li
+      = link_to "Furima利用規約" 
+    %li
+      = link_to "特定商取引に関する表記" 
+  = link_to "#", class: "footer--logo" do
+    = image_tag "logo-white.png", size: "150x44"
+  %p &copy; FRIMA, Inc.
