@@ -1,4 +1,4 @@
-$(function(){
+document.addEventListener("turbolinks:load", (function(){
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
     var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -84,4 +84,5 @@ $(function(){
       $('#brand_wrapper').remove();
     }
   });
-});
+})
+);
