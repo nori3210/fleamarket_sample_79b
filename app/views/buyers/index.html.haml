@@ -19,6 +19,7 @@
       .main__inner__paymet-type
         .main__inner__paymet-type__box
           支払方法
+          %br クレジットカード決済
           .main__inner__paymet-type__update
             = link_to '変更する',  new_card_path, class:'paymet-type__btn'
           .main__inner__paymet-type__text
@@ -38,7 +39,7 @@
           %br
           =  "〒" + current_user.address.postal_code.to_s
           %br
-          =current_user.address.prefecture
+          = current_user.address.prefecture
           %br
           = current_user.address.city 
           %br
@@ -49,7 +50,6 @@
         =link_to '変更する', '/', class:'shipping-address__btn'
       .main__inner__to-buy
         %p.main__inner__to-buy__text
-        配送先と支払方法の入力を完了してください。
         = form_tag(action: :pay, method: :post, item_id: @item) do
           =button_to '購入する',done_item_buyers_path(@item),method: :get, class:'to-buy__btn'
   =render partial:'footer'
