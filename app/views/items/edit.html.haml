@@ -56,8 +56,8 @@
           %span.box__title--required 必須
         .form__group__category
           = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @item.category.root.id},  {class: "box__category",id: 'parent_category'}
-          = f.collection_select :category_id, @item.category.parent.siblings, :id, :name,{prompt: "選択してください", selected: @item.category.parent.id},  {class: "box__category",id: 'parent_category'}
-          = f.collection_select :category_id, @item.category.siblings, :id, :name,{prompt: "選択してください", selected: @item.category.id},  {class: "box__category",id: 'parent_category'}
+          = f.collection_select :category_id, @item.category.parent.siblings, :id, :name,{prompt: "選択してください", selected: @item.category.parent.id},  {class: "box__category",id: 'child_category'}
+          = f.collection_select :category_id, @item.category.siblings, :id, :name,{prompt: "選択してください", selected: @item.category.id},  {class: "box__category",id: 'grandchild_category'}
 
         .box__margin
         .box__title

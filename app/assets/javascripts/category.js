@@ -33,6 +33,7 @@ document.addEventListener("turbolinks:load", (function(){
         dataType: 'json'
       })
       .done(function(children){
+        console.log("test")
         $('#child_category').remove(); //親が変更された時、子以下を削除するする
         $('#grandchild_category').remove();
         $('#size_wrapper').remove();
@@ -48,6 +49,7 @@ document.addEventListener("turbolinks:load", (function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
+      console.log("111")
       $('#child_category').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#grandchild_category').remove();
       $('#size_wrapper').remove();
